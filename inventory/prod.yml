@@ -1,6 +1,13 @@
 ---
-elasticsearch:
-  hosts:
-    localhost:
-      ansible_connection: ssh
-      ansible_user: root
+  elas:
+    hosts:
+      elas01:
+        ansible_host: 192.168.88.16
+        ansible_connection: ssh
+        ansible_user: root
+  kiba:
+    hosts:
+      kiba01:
+        ansible_host: 192.168.88.15
+        ansible_connection: ssh
+        ansible_user: root
