@@ -203,3 +203,31 @@ kiba01                     : ok=9    changed=0    unreachable=0    failed=0
  * распаковка в рабочий каталог из пакета
  * создание по шаблону переменных окружений (templates)
 ```
+### Доработка
+
+1. Просьба приложить к описанию результат вывода ansible-lint и исправить его ошибки и предупреждения  
+
+Для проверки работы линтера, внес лишний символ в site.yml, проверил, скорректировал ошибку:  
+
+```
+dusk@DESKTOP-DQUFL9J:~/devops-netology-ansible-2$ sudo nano site.yml
+dusk@DESKTOP-DQUFL9J:~/devops-netology-ansible-2$ ansible-lint site.yml -v
+Syntax Error while loading YAML.
+  found character that cannot start any token
+
+The error appears to have been in '/home/dusk/devops-netology-ansible-2/site.yml': line 2, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+---
+- `name: Install Java
+  ^ here
+
+dusk@DESKTOP-DQUFL9J:~/devops-netology-ansible-2$ sudo nano site.yml
+dusk@DESKTOP-DQUFL9J:~/devops-netology-ansible-2$ ansible-lint site.yml -v
+Examining site.yml of type playbook
+dusk@DESKTOP-DQUFL9J:~/devops-netology-ansible-2$
+```
+2. Обязательно удалите из под версионного контроля java. Во-первых это нарушение лиценционного соглашения. Во-вторых дистрибутивы не хранят под версионным контролем, он для исходного кода  
+Удалил папку files из репозитория. На самом деле, самого дистрибутива там, конечно, не было. 
